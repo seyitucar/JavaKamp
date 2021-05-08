@@ -4,8 +4,8 @@ import eCommerceDemo.entities.concretes.User;
 
 public interface UserService {
 	
-	void register(User user);
+	public void register(User user);
 	
-	void login(String email, String password);
+	public void login(String email, String password);
 
 }

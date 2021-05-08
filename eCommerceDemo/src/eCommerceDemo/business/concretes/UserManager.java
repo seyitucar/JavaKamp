@@ -1,27 +1,30 @@
 package eCommerceDemo.business.concretes;
 
 import eCommerceDemo.business.abstracts.AuthenticationService;
-import eCommerceDemo.business.abstracts.BaseUserManager;
+import eCommerceDemo.business.abstracts.UserService;
 import eCommerceDemo.business.abstracts.ValidationService;
+import eCommerceDemo.core.LoginService;
 import eCommerceDemo.dataAccess.abstracts.UserDao;
 import eCommerceDemo.entities.concretes.User;
 
-public class UserManager extends BaseUserManager{
+public class UserManager implements UserService {
 	
 	private UserDao userDao;
 	private ValidationService validationService;
 	private AuthenticationService authenticationService;
+	private LoginService loginService;
 
-
-	public UserManager(UserDao userDao, AuthenticationService authenticationService, ValidationService validationService ) {
+	public UserManager(UserDao userDao, ValidationService validationService,
+			AuthenticationService authenticationService, LoginService loginService) {
 		super();
 		this.userDao = userDao;
-		this.authenticationService = authenticationService;
 		this.validationService = validationService;
-	}	
+		this.authenticationService = authenticationService;
+		this.loginService = loginService;
+	}
+	
 
-
-
+	@Override
 	public void register(User user) {
 		
 		if(validationService.validate(user)) {
@@ -40,6 +43,7 @@ public class UserManager extends BaseUserManager{
 			
 			if(user.getEmail().equals(email)&&user.getPassword().equals(password)) {
 				
+				loginService.loginToSystem("Google ile giriþ yapýldý.");
 				System.out.println("Baþarýlý bir þekilde giriþ yaptýnýz.");
 				
 			}else if(!user.getEmail().contains(email)) {
