@@ -15,7 +15,7 @@ public class OrderManager implements OrderService {
 	}
 
 	@Override
-	public void sale(User user, Game game, Campaign campaign, DiscountService discountService) {
+	public void sale(User user, Game game, Campaign campaign) {
 		
 		System.out.println(user.getFirstName() + " "+ game.getName() + " oyununu " + campaign.getName() +
 				" kampanyasý ile " + discountService.calculateDiscount(game, campaign) + " TL fiyatýna aldýnýz " + "Oyunun orj. fiyatý: " + game.getPrice()+ " TL");

@@ -6,6 +6,6 @@ import gameHubDemo.entities.concretes.User;
 
 public interface OrderService {
 	
-	void sale (User user, Game game, Campaign campaign, DiscountService discountService);
+	void sale (User user, Game game, Campaign campaign);
 
 }

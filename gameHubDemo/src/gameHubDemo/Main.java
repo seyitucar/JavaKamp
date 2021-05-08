@@ -36,7 +36,7 @@ public class Main {
 		
 		OrderService orderService = new OrderManager(new DiscountManager());
 		
-		orderService.sale(user1, game2, campaign1, discountService);
+		orderService.sale(user1, game2, campaign1);
 		
 		BaseUserManager userManager = new SteamUserManager(new MernisServiceAdapter());
 		userManager.register(user1);
