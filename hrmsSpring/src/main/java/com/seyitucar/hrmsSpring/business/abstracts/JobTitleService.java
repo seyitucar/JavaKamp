@@ -2,9 +2,12 @@ package com.seyitucar.hrmsSpring.business.abstracts;
 
 import java.util.List;
 
+import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
+import com.seyitucar.hrmsSpring.core.utilities.results.Result;
 import com.seyitucar.hrmsSpring.entities.concretes.JobTitle;
 
 public interface JobTitleService {
-	List<JobTitle> getAll();
-
+	
+	DataResult<List<JobTitle>> getAll();
+	Result add(JobTitle jobTitle);
 }

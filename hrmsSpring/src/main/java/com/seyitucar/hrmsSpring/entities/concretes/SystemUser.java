@@ -5,10 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="system_users")
 public class SystemUser {
 	
@@ -22,15 +26,4 @@ public class SystemUser {
 	@Column(name="last_name")
 	private String lastName;
 	
-	public SystemUser () {
-		
-	}
-	 
-	public SystemUser(int userId, String firstName, String lastName) {
-		super();
-		this.userId = userId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
-
 }

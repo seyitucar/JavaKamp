@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.seyitucar.hrmsSpring.entities.concretes.Employee;
 
 
-public interface EmloyeeDao extends JpaRepository<Employee,Integer> {
+public interface EmployeeDao extends JpaRepository<Employee,Integer> {
 
 }

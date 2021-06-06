@@ -5,18 +5,23 @@ import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="system_user_confirms")
 public class SystemUserConfirm {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -26,14 +31,4 @@ public class SystemUserConfirm {
 	@Column(name="confirm_date")
 	private Date confirmDate;
 	
-	public SystemUserConfirm() {
-		
-	}
-	
-	public SystemUserConfirm(int id, boolean isConfirmed, Date confirmDate) {
-		super();
-		this.id = id;
-		this.isConfirmed = isConfirmed;
-		this.confirmDate = confirmDate;
-	}
 }
