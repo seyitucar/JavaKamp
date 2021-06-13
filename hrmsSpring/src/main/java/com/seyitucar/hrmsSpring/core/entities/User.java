@@ -1,4 +1,4 @@
-package com.seyitucar.hrmsSpring.entities.concretes;
+package com.seyitucar.hrmsSpring.core.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,17 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Table(name="users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 	
 	@Id
@@ -25,9 +30,13 @@ public class User {
 	private int id;
 	
 	@Column(name="email")
+	@Email
+	@NotBlank
+	@NotNull
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="password")	
+	@NotBlank
+	@NotNull
 	private String password;
-	
 }

@@ -4,14 +4,12 @@ import java.util.List;
 
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.Employee;
+import com.seyitucar.hrmsSpring.entities.concretes.Employer;
 
-public interface EmployeeService {
+public interface EmployerService {
 	
-	Result register (Employee employee);
+	DataResult<List<Employer>> getAll();
 	
-	Result logIn (String email);
-	
-	DataResult<List<Employee>> getAll();
-		
+	Result register (Employer employer);
+
 }

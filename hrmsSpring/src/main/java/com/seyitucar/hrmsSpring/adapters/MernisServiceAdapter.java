@@ -15,7 +15,7 @@ public class MernisServiceAdapter implements UserCheckService{
 	@Override
 	public boolean checkIfRealPerson(Employee employee) {
 		
-		/*
+		
 		KPSPublicSoapProxy client = new KPSPublicSoapProxy();
 		
 		boolean result = false;	
@@ -33,9 +33,7 @@ public class MernisServiceAdapter implements UserCheckService{
 		}
 			
 		return result;
-		*/
-		
-		return true;
+	
 	}
 
 }
