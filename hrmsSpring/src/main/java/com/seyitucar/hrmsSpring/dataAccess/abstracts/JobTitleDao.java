@@ -7,4 +7,7 @@ import com.seyitucar.hrmsSpring.entities.concretes.JobTitle;
 public interface JobTitleDao extends JpaRepository<JobTitle,Integer> {
 	public JobTitle findByTitleNameEquals(String titleName);
 
+	
+	
+
 }

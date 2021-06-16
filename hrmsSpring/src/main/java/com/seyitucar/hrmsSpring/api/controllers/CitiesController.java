@@ -9,31 +9,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seyitucar.hrmsSpring.business.abstracts.JobTitleService;
+import com.seyitucar.hrmsSpring.business.abstracts.CityService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.JobTitle;
+import com.seyitucar.hrmsSpring.entities.concretes.City;
 
 @RestController
-@RequestMapping("/api/jobtitles")
-public class JobTitlesController {
+@RequestMapping("/api/cities")
+public class CitiesController {
 	
-	private JobTitleService jobTitleService;
-	
+	private CityService cityService;
+
 	@Autowired
-	public JobTitlesController(JobTitleService jobTitleService) {
+	public CitiesController(CityService cityService) {
 		super();
-		this.jobTitleService = jobTitleService;
+		this.cityService = cityService;
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody JobTitle jobTitle){
-		return this.jobTitleService.add(jobTitle);		
+	public Result add(@RequestBody City city) {
+		return this.cityService.add(city);
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobTitle>> getAll(){
-		return this.jobTitleService.getAll();		
+	public DataResult<List<City>> getAll(){
+		return this.cityService.getAll();
 	}
 
 }

@@ -4,10 +4,11 @@ import java.util.List;
 
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.Employer;
+import com.seyitucar.hrmsSpring.entities.concretes.City;
 
-public interface EmployerService {
+public interface CityService {
 	
-	DataResult<List<Employer>> getAll();
-	Result register (Employer employer);
+	Result add(City city);
+	DataResult<List<City>> getAll();
+
 }

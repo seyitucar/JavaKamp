@@ -24,6 +24,10 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class SystemUser extends User{
 	
+	@Id
+	@Column(name="user_id")
+	private int id;
+	
 	@Column(name="first_name")
 	@NotBlank
 	@NotNull

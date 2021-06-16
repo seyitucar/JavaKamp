@@ -8,10 +8,7 @@ import com.seyitucar.hrmsSpring.entities.concretes.Employee;
 
 public interface EmployeeService {
 	
-	Result register (Employee employee);
-	
-	Result logIn (String email);
-	
-	DataResult<List<Employee>> getAll();
-		
+	Result register (Employee employee);	
+	Result logIn (String email);	
+	DataResult<List<Employee>> getAll();		
 }

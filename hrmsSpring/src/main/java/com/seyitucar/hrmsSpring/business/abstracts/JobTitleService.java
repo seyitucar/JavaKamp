@@ -8,6 +8,6 @@ import com.seyitucar.hrmsSpring.entities.concretes.JobTitle;
 
 public interface JobTitleService {
 	
-	DataResult<List<JobTitle>> getAll();
 	Result add(JobTitle jobTitle);
+	DataResult<List<JobTitle>> getAll();
 }

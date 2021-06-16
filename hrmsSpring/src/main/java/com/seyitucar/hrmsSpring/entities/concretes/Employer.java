@@ -1,13 +1,17 @@
 package com.seyitucar.hrmsSpring.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.seyitucar.hrmsSpring.core.entities.User;
 
 import lombok.AllArgsConstructor;
@@ -20,9 +24,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="employers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
 public class Employer extends User{
+	
+	@Id
+	@Column(name="user_id")
+	private int id;
 	
 	@Column(name="company_name")
 	@NotBlank
@@ -39,4 +48,6 @@ public class Employer extends User{
 	@NotNull
 	private String phoneNumber;
 	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobAdvertisements;
 }
