@@ -1,5 +1,7 @@
 package com.seyitucar.hrmsSpring.entities.concretes;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +30,9 @@ public class Image {
 	
 	@Column(name = "url")
 	private String url;
+	
+    @Column(name = "uploaded_at")
+    private LocalDate uploadedAt;
 	
 	@ManyToOne()
 	@JoinColumn(name = "employee_id")
