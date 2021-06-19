@@ -14,6 +14,7 @@ import com.seyitucar.hrmsSpring.business.abstracts.JobAdvertisementService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
 import com.seyitucar.hrmsSpring.entities.concretes.JobAdvertisement;
+import com.seyitucar.hrmsSpring.entities.dtos.JobAdvertisementDto;
 
 @RestController
 @RequestMapping("/api/jobAdvertisements")
@@ -42,29 +43,28 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getAll();
 	}
 	
-	@GetMapping("/getByIsActiveTrue")
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrue(){
-		return this.jobAdvertisementService.getByIsActiveTrue();
+	@GetMapping("/getByActivity")
+	public DataResult<List<JobAdvertisementDto>> getByActivity(boolean activityStatus){
+		return this.jobAdvertisementService.getByActivity(activityStatus);
 	}
 	
-	@GetMapping("/getByIsActiveTrueOrderByApplicationDeadline")
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByApplicationDeadline(){
-		return this.jobAdvertisementService.getByIsActiveTrueOrderByApplicationDeadline();
+	@GetMapping("/getByActivityOrderByApplicationDeadline")
+	public DataResult<List<JobAdvertisementDto>> getByActivityOrderByApplicationDeadline(boolean activityStatus){
+		return this.jobAdvertisementService.getByActivityOrderByApplicationDeadline(activityStatus);
 	}
 	
-	@GetMapping("/getByIsActiveTrueOrderByApplicationDeadlineDesc")
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByApplicationDeadlineDesc(){
-		return this.jobAdvertisementService.getByIsActiveTrueOrderByApplicationDeadlineDesc();
+	@GetMapping("/getByActivityOrderByApplicationDeadlineDesc")
+	public DataResult<List<JobAdvertisementDto>> getByActivityOrderByApplicationDeadlineDesc(boolean activityStatus){
+		return this.jobAdvertisementService.getByActivityOrderByApplicationDeadlineDesc(activityStatus);
 	}
 	
-	@GetMapping("/getByIsActiveTrueAndEmployerCompanyName")
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueAndEmployer_CompanyName(@RequestParam String companyName){
-		return this.jobAdvertisementService.getByIsActiveTrueAndEmployer_CompanyName(companyName);
+	@GetMapping("/getByActivityAndCompanyName")
+	public DataResult<List<JobAdvertisementDto>> getByActivityAndCompanyName(@RequestParam boolean activityStatus, @RequestParam String companyName){
+		return this.jobAdvertisementService.getByActivityAndCompanyName(activityStatus, companyName);
 	}
 	
 	@GetMapping("/getByEmployerId")
 	public DataResult<List<JobAdvertisement>> getByEmployerId(@RequestParam int employerId){
 		return this.jobAdvertisementService.getByEmployerId(employerId);
 	}
-	
 }

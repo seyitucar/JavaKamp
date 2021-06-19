@@ -1,5 +1,6 @@
 package com.seyitucar.hrmsSpring.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="job_advertisement")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobTitle", "city", "employer"}) 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","city"}) 
 public class JobAdvertisement {
 	
 	@Id
@@ -41,7 +42,7 @@ public class JobAdvertisement {
 	@ManyToOne
 	@JoinColumn(name="employer_id")
 	private Employer employer;
-	
+
 	@Column(name="job_description")
 	private String jobDescription;
 	
@@ -55,7 +56,7 @@ public class JobAdvertisement {
 	private int numberOfOpenPosition;
 	
 	@Column(name="application_deadline")
-	private Date applicationDeadline;
+	private LocalDate applicationDeadline;
 	
 	@Column(name="is_active")
 	private boolean isActive;

@@ -13,7 +13,6 @@ import com.seyitucar.hrmsSpring.business.abstracts.EmployeeService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
 import com.seyitucar.hrmsSpring.entities.concretes.Employee;
-import com.seyitucar.hrmsSpring.entities.dtos.EmployeeDto;
 
 @RestController
 @RequestMapping("/api/employees")

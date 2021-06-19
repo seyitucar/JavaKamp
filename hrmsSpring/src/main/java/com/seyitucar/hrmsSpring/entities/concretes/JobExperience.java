@@ -1,17 +1,15 @@
 package com.seyitucar.hrmsSpring.entities.concretes;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,19 +19,28 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="cities")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
-public class City {
+@Table(name="job_experiences")
+public class JobExperience {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="city_name")
-	private String cityName;
+	@Column(name="position_name")
+	private String positionName;	
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "city")
-	private List<JobAdvertisement> jobAdvertisements;
+	@Column(name="job_place")
+	private String jobPlace;
+	
+	@Column(name="start_date")
+	private LocalDate startDate;
+	
+	@Column(name="leave_date",nullable = true)
+	private LocalDate leaveDate;
+	
+	@ManyToOne()
+	@JoinColumn(name="employee_id")
+	private Employee employee;
+		
 }

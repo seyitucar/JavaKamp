@@ -12,6 +12,7 @@ import com.seyitucar.hrmsSpring.core.utilities.results.SuccessDataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.SuccessResult;
 import com.seyitucar.hrmsSpring.dataAccess.abstracts.JobAdvertisementDao;
 import com.seyitucar.hrmsSpring.entities.concretes.JobAdvertisement;
+import com.seyitucar.hrmsSpring.entities.dtos.JobAdvertisementDto;
 
 @Service
 public class JobAdvertisementManager implements JobAdvertisementService {
@@ -36,27 +37,27 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrue() {
-		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.getByIsActiveTrue());
+	public DataResult<List<JobAdvertisementDto>> getByActivity(boolean activityStatus) {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.jobAdvertisementDao.getByActivity(activityStatus));
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByApplicationDeadline() {
-		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.getByIsActiveTrueOrderByApplicationDeadline());
+	public DataResult<List<JobAdvertisementDto>> getByActivityOrderByApplicationDeadline(boolean activityStatus) {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.jobAdvertisementDao.getByActivityOrderByApplicationDeadline(activityStatus));
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueOrderByApplicationDeadlineDesc() {
-		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.getByIsActiveTrueOrderByApplicationDeadlineDesc());
+	public DataResult<List<JobAdvertisementDto>> getByActivityOrderByApplicationDeadlineDesc(boolean activityStatus) {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.jobAdvertisementDao.getByActivityOrderByApplicationDeadlineDesc(activityStatus));
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getByIsActiveTrueAndEmployer_CompanyName(String companyName) {
-		return new SuccessDataResult<List<JobAdvertisement>>
-		(this.jobAdvertisementDao.getByIsActiveTrueAndEmployer_CompanyName(companyName));
+	public DataResult<List<JobAdvertisementDto>> getByActivityAndCompanyName(boolean activityStatus,String companyName) {
+		return new SuccessDataResult<List<JobAdvertisementDto>>
+		(this.jobAdvertisementDao.getByActivityAndCompanyName(activityStatus,companyName));
 	}
 
 	@Override
@@ -80,5 +81,4 @@ public class JobAdvertisementManager implements JobAdvertisementService {
 		return new SuccessDataResult<List<JobAdvertisement>>
 		(this.jobAdvertisementDao.getByEmployerId(employerId));
 	}
-
 }

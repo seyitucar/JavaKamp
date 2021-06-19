@@ -1,39 +1,39 @@
 package com.seyitucar.hrmsSpring.entities.concretes;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="cities")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisements"})
-public class City {
+@Entity
+@Table(name="employee_social_medias")
+public class EmployeeSocialMedia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="city_name")
-	private String cityName;
+	@ManyToOne()
+	@JoinColumn(name="social_media_id")
+	private SocialMedia socialMedia;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy = "city")
-	private List<JobAdvertisement> jobAdvertisements;
+	@Column(name="social_media_adress")
+	private String socialMediaAdress;
+	
+	@ManyToOne()
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
+
 }
