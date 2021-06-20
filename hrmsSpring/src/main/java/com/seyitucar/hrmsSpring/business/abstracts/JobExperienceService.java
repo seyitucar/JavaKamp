@@ -10,5 +10,5 @@ public interface JobExperienceService {
 
 	Result add(JobExperience jobExperience);
 	DataResult<List<JobExperience>> getAll();
-	DataResult<List<JobExperience>> findAllByEmployeeIdOrderByLeaveDateDesc(int employeeId);
+	DataResult<List<JobExperience>> findAllByEmployeeIdOrderByJobLeaveDateDesc(int employeeId);
 }

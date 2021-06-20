@@ -27,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Table(name="employees")
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 @EqualsAndHashCode(callSuper = false)
+
 public class Employee extends User {
 
 	@Id
@@ -52,32 +53,5 @@ public class Employee extends User {
 	@NotBlank
 	@NotNull
 	private LocalDate birthYear;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<School> schools;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<JobExperience> jobExperiences;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<Image> images;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<EmployeeLanguage> employeeLanguages;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<EmployeeSocialMedia> employeeSocialMedias;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<Skill> skills;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
-	private List<CoverLetter> coverLetters;
+
 }

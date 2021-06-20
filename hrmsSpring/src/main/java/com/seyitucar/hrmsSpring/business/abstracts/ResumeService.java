@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.CoverLetter;
+import com.seyitucar.hrmsSpring.entities.concretes.Resume;
 
-public interface CoverLetterService {
+public interface ResumeService {
 	
-	Result add(CoverLetter coverLetter);
-	DataResult<List<CoverLetter>> getAll();
-
+	Result add(Resume  resume);
+	DataResult<List<Resume>> getAll();
+	DataResult<Resume> getByEmployeeId(int employeeId);
 }

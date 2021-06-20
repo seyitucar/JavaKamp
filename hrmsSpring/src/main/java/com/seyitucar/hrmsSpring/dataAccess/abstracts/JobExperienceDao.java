@@ -8,6 +8,6 @@ import com.seyitucar.hrmsSpring.entities.concretes.JobExperience;
 
 public interface JobExperienceDao extends JpaRepository<JobExperience, Integer>{
 	
-	List<JobExperience> findAllByEmployeeIdOrderByLeaveDateDesc (int employeeId);
+	List<JobExperience> findAllByEmployeeIdOrderByJobLeaveDateDesc (int employeeId);
 
 }

@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +23,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="job_experiences")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+
 public class JobExperience {
 	
 	@Id
@@ -33,14 +38,20 @@ public class JobExperience {
 	@Column(name="job_place")
 	private String jobPlace;
 	
-	@Column(name="start_date")
-	private LocalDate startDate;
+	@Column(name="job_start_date")
+	private LocalDate jobStartDate;
 	
-	@Column(name="leave_date",nullable = true)
-	private LocalDate leaveDate;
+	@Column(name="job_leave_date",nullable = true)
+	private LocalDate jobLeaveDate;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "resume_id")
+	private Resume resume;
+	
+    @JsonIgnoreProperties({"firstName","lastName","email","password","nationalityId","birthYear"})
 	@ManyToOne()
-	@JoinColumn(name="employee_id")
+	@JoinColumn(name = "employee_id")
 	private Employee employee;
 		
 }

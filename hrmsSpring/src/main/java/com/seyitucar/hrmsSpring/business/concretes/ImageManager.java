@@ -34,7 +34,7 @@ public class ImageManager implements ImageService{
 	}
 
 	@Override
-	public Result add(MultipartFile file, Image image) throws IOException {
+	public Result add(MultipartFile file, Image image) throws IOException{
 		
 		Map<String, String> getImage = (Map<String,String>)cloudinaryService.upload(file).getData();
 		image.setUrl(getImage.get("url"));
@@ -69,5 +69,11 @@ public class ImageManager implements ImageService{
 			return new SuccessDataResult<List<Image>>(this.imageDao.findAllByEmployeeId(employeeId));
 		}
 		return new ErrorDataResult<List<Image>>("Hata! Fotoğraflar getirilemedi.");
+	}
+
+	@Override
+	public Result delete(Image image) {
+		this.imageDao.delete(image);
+		return new SuccessResult("Resim silindi!");
 	}
 }

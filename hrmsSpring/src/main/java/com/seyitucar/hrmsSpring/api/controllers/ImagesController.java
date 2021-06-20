@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.seyitucar.hrmsSpring.business.abstracts.ImageService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
+import com.seyitucar.hrmsSpring.core.utilities.results.SuccessResult;
 import com.seyitucar.hrmsSpring.entities.concretes.Employee;
 import com.seyitucar.hrmsSpring.entities.concretes.Image;
 
@@ -32,7 +33,7 @@ public class ImagesController {
 	}
 	
 	@PostMapping("/add")
-	public ResponseEntity<?> add(@RequestBody MultipartFile file, @RequestParam int employeeId) throws IOException {
+	public Result add(@RequestBody MultipartFile file, @RequestParam int employeeId) throws IOException{
 		
 		Image image = new Image();
 		Employee employee = new Employee();
@@ -40,7 +41,13 @@ public class ImagesController {
 		employee.setId(employeeId);
 		image.setEmployee(employee);
 	
-		return ResponseEntity.ok(this.imageService.add(file, image)) ;
+		return this.imageService.add(file, image);
+	}
+	
+	@PostMapping("/delete")
+	public Result delete(@RequestBody Image image) {
+		
+		return this.imageService.delete(image);
 	}
 	
 	

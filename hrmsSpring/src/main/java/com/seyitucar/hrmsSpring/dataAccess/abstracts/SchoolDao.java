@@ -8,6 +8,6 @@ import com.seyitucar.hrmsSpring.entities.concretes.School;
 
 public interface SchoolDao extends JpaRepository<School, Integer> {
 	
-	List<School> findAllByEmployeeIdOrderByGraduationDateDesc(int employeeId);
+	List<School> findAllByEmployeeIdOrderBySchoolGraduationDateDesc(int employeeId);
 
 }

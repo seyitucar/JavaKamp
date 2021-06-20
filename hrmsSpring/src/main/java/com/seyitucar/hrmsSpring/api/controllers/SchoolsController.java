@@ -38,9 +38,9 @@ public class SchoolsController {
 		return this.schoolService.getAll();
 	}
 	
-	@GetMapping("/findAllByEmployeeIdOrderByGraduationDateDesc")
-	DataResult<List<School>> findAllByEmployeeIdOrderByGraduationDateDesc(@RequestParam int employeeId){
-		return this.schoolService.findAllByEmployeeIdOrderByGraduationDateDesc(employeeId);
+	@GetMapping("/findAllByEmployeeIdOrderBySchoolGraduationDateDesc")
+	DataResult<List<School>> findAllByEmployeeIdOrderBySchoolGraduationDateDesc(@RequestParam int employeeId){
+		return this.schoolService.findAllByEmployeeIdOrderBySchoolGraduationDateDesc(employeeId);
 	}
 
 }

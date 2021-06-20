@@ -7,10 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="employee_languages")
 @Entity
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 
 public class EmployeeLanguage {
 	
@@ -35,9 +38,15 @@ public class EmployeeLanguage {
 	
 	@Min(value = 1)
 	@Max(value = 5)
-	@Column(name = "level")
-	private int level;
+	@Column(name = "language_level")
+	private int languageLevel;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "resume_id")
+	private Resume resume;
+	
+    @JsonIgnoreProperties({"firstName","lastName","email","password","nationalityId","birthYear"})
 	@ManyToOne()
 	@JoinColumn(name = "employee_id")
 	private Employee employee;

@@ -10,32 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seyitucar.hrmsSpring.business.abstracts.CoverLetterService;
+import com.seyitucar.hrmsSpring.business.abstracts.ResumeService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.CoverLetter;
+import com.seyitucar.hrmsSpring.entities.concretes.Resume;
 
 @RestController
-@RequestMapping("/api/coverletters")
-public class CoverLettersController {
+@RequestMapping("/api/resumes")
+public class ResumesController {
 	
-	private CoverLetterService coverLetterService;
+	private ResumeService resumeService;
 
 	@Autowired
-	public CoverLettersController(CoverLetterService coverLetterService) {
+	public ResumesController(ResumeService resumeService) {
 		super();
-		this.coverLetterService = coverLetterService;
+		this.resumeService = resumeService;
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody CoverLetter coverLetter) {
-		return this.coverLetterService.add(coverLetter);
+	public Result add(@RequestBody Resume  resume) {
+		return this.resumeService.add(resume);
 	}
 	
-	
-	@GetMapping("/getAll")
-	public DataResult<List<CoverLetter>> getAll(){
-		return this.coverLetterService.getAll();
+	@GetMapping("/getall")
+	public DataResult<List<Resume>> getAll() {
+		return this.resumeService.getAll();
 	}
 	
+	@GetMapping("/getByEmployeeId")
+	DataResult<Resume> getByEmployeeId(@RequestParam int employeeId){
+		return this.resumeService.getByEmployeeId(employeeId);
+	}
 }

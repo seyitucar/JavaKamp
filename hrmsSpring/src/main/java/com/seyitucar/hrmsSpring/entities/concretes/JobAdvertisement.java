@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="job_advertisement")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","city"}) 
+
 public class JobAdvertisement {
 	
 	@Id
@@ -31,18 +32,6 @@ public class JobAdvertisement {
 	@Column(name="id")
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name="job_title_id")
-	private JobTitle jobTitle;
-	
-	@ManyToOne
-	@JoinColumn(name="city_id")
-	private City city;
-	
-	@ManyToOne
-	@JoinColumn(name="employer_id")
-	private Employer employer;
-
 	@Column(name="job_description")
 	private String jobDescription;
 	
@@ -63,5 +52,20 @@ public class JobAdvertisement {
 	
 	@Column(name="created_at")
 	private Date createdAt;
+	
+	@Column(name="closing_date")
+	private LocalDate closingDate;
+	
+	@ManyToOne
+	@JoinColumn(name="job_title_id")
+	private JobTitle jobTitle;
+	
+	@ManyToOne
+	@JoinColumn(name="city_id")
+	private City city;
+	
+	@ManyToOne
+	@JoinColumn(name="employer_id")
+	private Employer employer;
 	
 }

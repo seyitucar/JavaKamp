@@ -9,6 +9,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Data;
@@ -32,6 +35,12 @@ public class Skill {
 	@Column(name = "technology_name")
 	private String technologyName;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "resume_id")
+	private Resume resume;
+	
+    @JsonIgnoreProperties({"firstName","lastName","email","password","nationalityId","birthYear"})
 	@ManyToOne()
 	@JoinColumn(name = "employee_id")
 	private Employee employee;

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.seyitucar.hrmsSpring.business.abstracts.JobExperienceService;
 import com.seyitucar.hrmsSpring.core.utilities.results.DataResult;
 import com.seyitucar.hrmsSpring.core.utilities.results.Result;
-import com.seyitucar.hrmsSpring.entities.concretes.EmployeeLanguage;
 import com.seyitucar.hrmsSpring.entities.concretes.JobExperience;
 
 @RestController
@@ -33,15 +32,14 @@ public class JobExperiencesController {
 		return this.jobExperienceService.add(jobExperience);
 	}
 	
-	
 	@GetMapping("/getAll")
 	public DataResult<List<JobExperience>> getAll(){
 		return this.jobExperienceService.getAll();
 	}
 	
-	@GetMapping("/findAllByEmployeeIdOrderByLeaveDateDesc")
-	DataResult<List<JobExperience>> findAllByEmployeeIdOrderByLeaveDateDesc(@RequestParam int employeeId){
-		return this.jobExperienceService.findAllByEmployeeIdOrderByLeaveDateDesc(employeeId);
+	@GetMapping("/findAllByEmployeeIdOrderByJobLeaveDateDesc")
+	DataResult<List<JobExperience>> findAllByEmployeeIdOrderByJobLeaveDateDesc(@RequestParam int employeeId){
+		return this.jobExperienceService.findAllByEmployeeIdOrderByJobLeaveDateDesc(employeeId);
 	}
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Table(name="cover_letters")
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "employees"})
+
 public class CoverLetter {
 	
 	@Id
@@ -28,11 +32,8 @@ public class CoverLetter {
 	@Column(name = "description")
 	private String description;
 	
-	
+    @JsonIgnoreProperties({"firstName","lastName","email","password","nationalityId","birthYear"})
 	@ManyToOne()
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
-	
-	
-
 }

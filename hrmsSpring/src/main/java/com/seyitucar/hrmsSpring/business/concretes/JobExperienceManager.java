@@ -36,8 +36,8 @@ public class JobExperienceManager implements JobExperienceService {
 	}
 
 	@Override
-	public DataResult<List<JobExperience>> findAllByEmployeeIdOrderByLeaveDateDesc(int employeeId) {
-		return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findAllByEmployeeIdOrderByLeaveDateDesc(employeeId));
+	public DataResult<List<JobExperience>> findAllByEmployeeIdOrderByJobLeaveDateDesc(int employeeId) {
+		return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findAllByEmployeeIdOrderByJobLeaveDateDesc(employeeId));
 	}
 
 }

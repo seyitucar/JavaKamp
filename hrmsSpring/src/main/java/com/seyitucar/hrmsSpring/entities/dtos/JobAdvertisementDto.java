@@ -18,5 +18,5 @@ public class JobAdvertisementDto {
 	private int numberOfOpenPosition;
 	private LocalDate applicationDeadline;
 	private Date createdAt;
-
+	
 }
