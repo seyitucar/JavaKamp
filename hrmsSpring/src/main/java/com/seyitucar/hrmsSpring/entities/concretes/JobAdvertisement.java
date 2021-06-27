@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="job_advertisement")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","city"}) 
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","city","employer","jobTitle"}) 
 
 public class JobAdvertisement {
 	
@@ -47,7 +48,7 @@ public class JobAdvertisement {
 	@Column(name="application_deadline")
 	private LocalDate applicationDeadline;
 	
-	@Column(name="is_active")
+	@Column(name="is_active", columnDefinition = "boolean default false")
 	private boolean isActive;
 	
 	@Column(name="created_at")
@@ -55,17 +56,25 @@ public class JobAdvertisement {
 	
 	@Column(name="closing_date")
 	private LocalDate closingDate;
-	
+
 	@ManyToOne
 	@JoinColumn(name="job_title_id")
 	private JobTitle jobTitle;
-	
+
 	@ManyToOne
 	@JoinColumn(name="city_id")
 	private City city;
-	
+
 	@ManyToOne
 	@JoinColumn(name="employer_id")
 	private Employer employer;
+
+	@ManyToOne
+	@JoinColumn(name="working_type_id")
+	private WorkingType workingType;
+	
+	@ManyToOne
+	@JoinColumn(name="working_place_id")
+	private WorkingPlace workingPlace;
 	
 }

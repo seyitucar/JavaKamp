@@ -10,5 +10,6 @@ public interface EmployeeService {
 	
 	Result register (Employee employee);	
 	Result logIn (String email);	
-	DataResult<List<Employee>> getAll();		
+	DataResult<List<Employee>> getAll();
+	DataResult<Employee> findById(int id);
 }

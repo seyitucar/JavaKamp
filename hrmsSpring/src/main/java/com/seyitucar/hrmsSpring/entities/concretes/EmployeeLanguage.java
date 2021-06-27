@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="employee_languages")
 @Entity
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 
 public class EmployeeLanguage {
 	

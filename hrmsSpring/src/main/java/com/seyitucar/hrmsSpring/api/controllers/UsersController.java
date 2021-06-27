@@ -26,7 +26,7 @@ import com.seyitucar.hrmsSpring.core.utilities.results.ErrorDataResult;
 
 
 @RestController
-@RequestMapping(name="/api/users")
+@RequestMapping("/api/users")
 public class UsersController {
 	
 	private UserService userService;
@@ -36,7 +36,7 @@ public class UsersController {
 		this.userService = userService;
 	}
 	
-	@PostMapping(value="/add")
+	@PostMapping("/add")
 	public ResponseEntity<?> add(@Valid @RequestBody User user){
 		return ResponseEntity.ok(this.userService.add(user)) ;		
 	}

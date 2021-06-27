@@ -87,4 +87,9 @@ public class EmployeeManager implements EmployeeService {
 		}
 		return new SuccessResult();
 	}
+
+	@Override
+	public DataResult<Employee> findById(int id) {
+		return new SuccessDataResult<Employee>(this.employeeDao.findById(id));
+	}
 }
